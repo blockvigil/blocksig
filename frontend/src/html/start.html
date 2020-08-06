@@ -1,0 +1,231 @@
+	<form id="mainform">
+		<div class="container">
+			<h2 class="header center orange-text">New Document</h2>
+			<ul id="stepper" class="stepper linear horizontal">
+				<li class="step active">
+					<div class="step-title waves-effect waves-dark">Add Document</div>
+					<div class="step-content">
+						<h4>Upload any PDF or choose from our templates (coming soon)</h4>
+						<div class="row">
+							<div class="file-field input-field col s12">
+								<div class="btn">
+									<span>Upload</span>
+									<input type="file" id="doc" class="validate" accept="application/pdf" required>
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text">
+								</div>
+							</div>
+							<div class="input-field col s12">
+								<input name="docName" type="text">
+								<label for="docName" class="">Document Name</label>
+							</div>
+						</div>
+						<div class="step-actions">
+							<button class="waves-effect waves-dark btn next-step" data-feedback="check">CONTINUE</button>
+						</div>
+					</div>
+				</li>
+				<li class="step">
+					<div class="step-title waves-effect waves-dark">Sender</div>
+					<div class="step-content">
+						<h4>Tell us who you are!</h4>
+						<div class="row">
+							<div class="input-field col s12">
+								<input name="senderName" type="text" required>
+								<label for="senderName" class="">Your Name</label>
+							</div>
+							<div class="input-field col s12">
+								<input name="senderEmail" class="validate" type="email" required>
+								<label for="senderEmail" class="">Your e-mail</label>
+							</div>
+							<p>
+								<label>
+									<input type="checkbox" class="filled-in" checked="checked" id="notarize" />
+									<span>Are you notarizing?</span>
+								</label>
+							</p>
+						</div>
+						<div class="step-actions">
+							<button class="waves-effect waves-dark btn next-step" data-feedback="check">CONTINUE</button>
+							<button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+						</div>
+					</div>
+				</li>
+				<li class="step">
+					<div class="step-title waves-effect waves-dark">Signers</div>
+					<div class="step-content">
+						<h4>Add people who will e-sign the document</h4>
+						<div>
+							<em>Skip this step if you are the only signer or if the document doen't require it.</em>
+						</div>
+						<div class="row">
+							<table class="striped responsive-table" id="signers">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Remove</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-id="1">
+										<td>
+											<div class="input-field col s12">
+												<input name="name1" class="validate" type="text">
+											</div>
+										</td>
+										<td>
+											<div class="input-field col s12">
+												<input name="email1" class="validate" type="email">
+											</div>
+										</td>
+										<td>
+											<div class="input-field col s12">
+												<a onclick="removeSigner(1)" style="cursor: pointer;"><i class="material-icons left">clear</i></a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div>
+								<a class="btn-floating btn-large waves-effect waves-light red" onclick="addSigner()"><i class="material-icons">add</i></a>
+							</div>
+						</div>
+						<div class="step-actions">
+							<button class="waves-effect waves-dark btn next-step" data-feedback="signerCheck">CONTINUE</button>
+							<button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+						</div>
+					</div>
+				</li>
+				<li class="step">
+					<div class="step-title waves-effect waves-dark">Prepare Document</div>
+					<div id="docstep" class="step-content" style="max-height: 800px; overflow: auto;">
+						<h4>Place e-signature blocks through the document</h4>
+						<div class="row">
+							<a onclick="addSign()" class="btn"><i class="material-icons left">add_circle_outline</i>Add Sign</a>
+							<a onclick="removeSigns()" class="btn remove" style="display: none;"><i class="material-icons left">clear</i>Remove Signs (<span class="count">1</span>)</a>
+						</div>
+						<div class="row">
+							<ul class="pagination top">
+								<li class="waves-effect disabled"><a onclick="prevPage()"><i class="material-icons">chevron_left</i></a></li>
+								<li class="waves-effect active"><a onclick="renderPage(doc, 1)">1</a></li>
+								<li class="waves-effect disabled"><a onclick="nextPage()"><i class="material-icons">chevron_right</i></a></li>
+							</ul>
+						</div>
+						<div class="row">
+							<div class="signatures" style="position: absolute"></div>
+							<canvas id="the-canvas" style="border: 1px dotted black;"></canvas>
+						</div>
+						<div class="row">
+							<ul class="pagination bottom">
+								<li class="waves-effect disabled"><a onclick="prevPage()"><i class="material-icons">chevron_left</i></a></li>
+								<li class="waves-effect active"><a onclick="renderPage(doc, 1)">1</a></li>
+								<li class="waves-effect disabled"><a onclick="nextPage()"><i class="material-icons">chevron_right</i></a></li>
+							</ul>
+						</div>
+						<div class="step-actions">
+							<button class="waves-effect waves-dark btn next-step" data-feedback="finalCheck">CONTINUE</button>
+							<button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+						</div>
+					</div>
+				</li>
+				<li class="step">
+					<div class="step-title waves-effect waves-dark">Review</div>
+					<div class="step-content review">
+						<h4>Time for a final check!</h4>
+						<div class="row">
+							<div class="col s12 m6">
+								<div class="card blue-grey darken-1">
+									<div class="card-content white-text info">
+										<span class="card-title">Your Info</span>
+										<p>
+											<span class="name">Name</span><br/>
+											<span class="email">Email</span>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6">
+								<div class="card blue-grey darken-1">
+									<div class="card-content white-text document">
+										<span class="card-title">Document</span>
+										<p>
+											<span class="name">Name</span><br/>
+											<span class="blockcount">Signatures</span>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6">
+								<div class="card blue-grey darken-1">
+									<div class="card-content white-text signers">
+										<span class="card-title">Signers</span>
+										<p>
+											<span class="name">Name</span><br/>
+											<span class="email">Email</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="card blue" id="plans" style="max-width: 430px">
+									<!--
+									<div class="card-content">
+										<p>Choose your plan</p>
+									</div>
+									-->
+									<div class="card-tabs">
+										<ul class="tabs tabs-transparent">
+											<li class="tab" id="freetab"><a href="#free" class="">Free Plan</a></li>
+											<li class="tab"><a class="active" href="#monthly">Monthly Plan</a></li>
+											<li class="tab"><a class="" href="#paygo">Pay As You Go</a></li>
+										</ul>
+									</div>
+									<div class="card-content blue lighten-5">
+										<div id="free">
+											We will store proofs on Görli testnet for free!
+										</div>
+										<div id="monthly">
+											For just $5/month, we will store proofs of up to 100 documents on Ethereum mainnet via Matic Network.
+										</div>
+										<div id="paygo">
+											We will store proof of this document on Ethereum mainnet via Matic L2 for just $1!
+										</div>
+										<div id="payment-request-button" style="margin-top: 14px;">
+											<!-- A Stripe Element will be inserted here. -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="recaptcha" style="padding-left: 11px; display:none;" data-callback="setCaptcha"></div>
+						<p>By submitting this request, you agree to our <a href="terms.html" target="_blank">terms</a> and that you have permission to legally send the documents to the respective parties.</p>
+						<div class="step-actions">
+							<button class="waves-effect waves-dark btn" data-feedback="submit">SUBMIT</button>
+							<button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+						</div>
+					</div>
+				</li>
+				<li class="step">
+					<div class="step-title waves-effect waves-dark">Done</div>
+					<div class="step-content review">
+						<h4>All set!</h4>
+						<div class="row">
+							We've sent you an email to confirm the request. Please email hello@blocksig.app if you do not receive it soon.
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</form>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.943/build/pdf.min.js" integrity="sha256-co9ejuqsObIaa1JBpNpa1vFVyEg8XOZTkjgvaObyjGk=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js" integrity="sha256-bu/BP02YMudBc96kI7yklc639Mu4iKGUNNcam8D2nLc=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js" integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
+	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
+	<script src="https://cdn.jsdelivr.net/npm/materialize-stepper@2.1.4/materialize-stepper.min.js" integrity="sha256-9fknxrVUucY7Gy3swLfv9qbNNMTuPQ7ePnAfKvJaNO0=" crossorigin="anonymous"></script>
+	<script src="https://checkout.stripe.com/checkout.js"></script>
+	<script src="https://js.stripe.com/v3/"></script>

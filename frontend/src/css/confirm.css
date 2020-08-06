@@ -1,0 +1,18 @@
+.signdiv {
+    z-index:999;
+    border:1px solid black;
+    width: 250px;
+    height: 90px;
+    padding: 4px;
+    position: absolute;
+    opacity: 0.4;
+}
+.signdiv.self {
+    opacity: 1;
+}
+
+.signature {
+    display:none;
+    position: relative;
+    z-index: 1;
+}

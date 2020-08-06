@@ -1,0 +1,61 @@
+	<div class="container">
+		<h2 class="header orange-text">BlockSig - E-Sign Document</h2>
+		<div id="loader">
+			<p>Loading document..</p>
+			<div class="preloader-wrapper big active">
+				<div class="spinner-layer spinner-blue-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div>
+					<div class="gap-patch">
+						<div class="circle"></div>
+					</div>
+					<div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section no-pad-bot" id="index-banner" style="display: none;">
+		<div class="container">
+			<div class="row">
+				<button class="btn add" onclick="showSignBox()">Add Signature (<span></span>)</button>
+				<button class="btn clear" onclick="clearSigns()" style="display: none;">Clear Signatures</button>
+				<button class="btn finish" onclick="finish()" style="display: none;">Finish</button>
+			</div>
+			<ul class="pagination top">
+				<li class="waves-effect disabled"><a onclick="prevPage()"><i class="material-icons">chevron_left</i></a></li>
+				<li class="waves-effect active"><a onclick="renderPage(doc, 1)">1</a></li>
+				<li class="waves-effect disabled"><a onclick="nextPage()"><i class="material-icons">chevron_right</i></a></li>
+			</ul>
+		</div>
+		<div id="doc" class="row" style="overflow: auto; max-height: 800px; position: relative;">
+			<div class="signatures" style="position: absolute"></div>
+			<canvas id="the-canvas" style="border: 1px dotted black;"></canvas>
+		</div>
+		<div class="container">
+			<ul class="pagination bottom">
+				<li class="waves-effect disabled"><a onclick="prevPage()"><i class="material-icons">chevron_left</i></a></li>
+				<li class="waves-effect active"><a onclick="renderPage(doc, 1)">1</a></li>
+				<li class="waves-effect disabled"><a onclick="nextPage()"><i class="material-icons">chevron_right</i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="signmodal" class="modal" style="width: 350px;">
+		<div class="modal-content">
+			<h4>Draw your signature</h4>
+			<div>
+				<canvas id="signbox" width="240" height="80" style="border: 1px solid black"></canvas>
+			</div>
+			<div>
+				<button class="btn" onclick="signBox.clear()">Clear</button>
+				<button class="btn" onclick="addSign()">Sign</button>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.943/build/pdf.min.js" integrity="sha256-co9ejuqsObIaa1JBpNpa1vFVyEg8XOZTkjgvaObyjGk=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js" integrity="sha256-W+ivNvVjmQX6FTlF0S+SCDMjAuTVNKzH16+kQvRWcTg=" crossorigin="anonymous"></script>

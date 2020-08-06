@@ -1,0 +1,44 @@
+{
+  "name": "blocksig-frontend",
+  "version": "0.1.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp default",
+    "deploy": "gulp deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/blocksig/frontend.git"
+  },
+  "author": "Swaroop Hegde",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://gitlab.com/blocksig/frontend/issues"
+  },
+  "homepage": "https://gitlab.com/blocksig/frontend#README",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "devDependencies": {
+    "del": "^5.1.0",
+    "glob": "^7.1.6",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-awspublish": "^4.1.2",
+    "gulp-cache-bust": "^1.4.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-headerfooter": "^1.0.3",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-inject": "^5.0.5",
+    "gulp-template": "^5.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "run-sequence": "^2.2.1"
+  }
+}

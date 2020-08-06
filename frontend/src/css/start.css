@@ -1,0 +1,30 @@
+.signdiv {
+    z-index:999;
+    width: 250px;
+    height: 90px;
+    padding: 4px;
+    position: absolute;
+    background: rgba(43, 187, 183, 0.8);
+    cursor: move;
+}
+.signature {
+    display:none;
+    position: relative;
+    z-index: 1;
+    width: 225px;
+    height: 70px;
+}
+.xsign {
+    cursor: pointer;
+    position: absolute;
+    right: -27px;
+    top: -11px;
+}
+
+.g-recaptcha {
+    padding-left: 10px;
+}
+
+.step-actions {
+    position: unset !important;
+}

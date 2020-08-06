@@ -1,0 +1,17 @@
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:10
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+  - node_modules/
+
+deploy:
+  script:
+   - npm install
+   - npm run build
+   - npm run deploy
+  only:
+   - master
