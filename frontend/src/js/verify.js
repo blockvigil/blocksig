@@ -12,9 +12,13 @@ $(document).ready(function(){
 	$form = $('.box');
 	$form.css('height', parseInt($("main").css('height'))-parseInt($(".container h3").css('height'))-60);
 	$form.css('width', parseInt($(".container").css('width')));
-	$("#docInfo .ipfs").off().on('click', function(){
-		window.open('https://cloudflare-ipfs.com/ipfs/QmTAtqwkLtna9X3odMajgma5DKQ8eeqA6sR1vsktVfU4Wg/verify.html','_blank');
-	});
+	if (location.pathname.substr(0, 5) == '/ipfs'){
+		$("#docInfo .ipfs").hide();
+	} else {
+		$("#docInfo .ipfs").off().on('click', function(){
+			window.open('https://ipfs.io/ipfs/QmdMpi9k2sYynu8ZhqVt6YzWuL4NakQ638wDBQhTHry9wB/verify.html','_blank');
+		});
+	}
 	if(isAdvancedUpload){
 		$form
 		.addClass( 'has-advanced-upload' ) // letting the CSS part to know drag&drop is supported by the browser
