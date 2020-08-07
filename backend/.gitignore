@@ -1,0 +1,6 @@
+node_modules
+bsfiles/*
+config/*
+!config/default*
+.DS_Store
+.nyc_output

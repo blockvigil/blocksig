@@ -1,0 +1,54 @@
+{
+    "port": 5000,
+    "mysql": {
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "",
+        "database": "blocksig",
+        "connectionLimit": 3
+    },
+    "ses": {
+        "from": "",
+        "region": "us-east-1",
+        "accessKeyId": "",
+        "secretAccessKey": ""
+    },
+    "s3": {
+        "region": "us-east-1",
+        "bucket": "blocksig-data",
+        "accessKeyId": "",
+        "secretAccessKey": ""
+    },
+    "slack": "",
+    "proxy": true,
+    "cloudflare": true,
+    "ethvigil_api": {
+        "mainnet": {
+            "key": "",
+            "prefix": ""
+        },
+        "testnet": {
+            "api_key": "",
+            "prefix": ""
+        }
+    },
+    "stripe": {
+        "secret": "",
+        "plans": {
+            "monthly": ""
+        }
+    },
+    "slack_hooks": {
+        "data": "",
+        "error": "",
+        "stripe": ""
+    },
+    "api_prefix": "/api",
+    "frontend_prefix": "",
+    "recaptcha": "",
+    "spaceDaemon": {
+        "url": "http://0.0.0.0:9998",
+        "defaultBucket": "blocksig"
+    },
+    "dev": false
+}
