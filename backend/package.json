@@ -23,7 +23,7 @@
     "@slack/client": "^5.0.2",
     "aws-sdk": "^2.723.0",
     "config": "^3.3.1",
-    "ethjs-account": "^0.1.4",
+    "ethjs-account": "git://github.com/ethjs/ethjs-account.git#dependabot/npm_and_yarn/elliptic-6.5.3",
     "hummus": "^1.0.108",
     "js-sha3": "^0.8.0",
     "koa": "^2.13.0",
