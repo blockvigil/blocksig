@@ -63,6 +63,7 @@ gulp.task('pages', async function() {
 			gulp.src(htmlTarget)
 			.pipe(headerfooter.header('./src/header.html'))
 			.pipe(template({
+				fileName: fileName,
 				stripeKey: process.env.STRIPE_KEY,
 				recaptchaKey: process.env.RECAPTCHAKEY,
 				apiPrefix: process.env.API_PREFIX,
