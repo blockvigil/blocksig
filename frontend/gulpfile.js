@@ -96,8 +96,8 @@ gulp.task('robots', function () {
 // Gulp task to copy applepay web association file
 gulp.task('applepay', function () {
 	//#FIXME make it conditional later
-	return gulp.src('./src/apple-developer-merchantid-domain-association')
-		.pipe(gulp.dest('./dist/.well-known/'))
+	return gulp.src('./src/.well-known/*')
+		.pipe(gulp.dest('./dist/.well-known'))
 });
 
 // Gulp task to deploy to s3

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp default",
+    "clean": "gulp clean",
     "deploy": "gulp deploy",
     "tailwind": "tailwindcss build src/css/common.css -o src/css/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
