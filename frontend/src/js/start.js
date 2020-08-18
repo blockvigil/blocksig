@@ -77,7 +77,7 @@ $(document).ready(function(){
                                 for (j in signers){
                                     options += '<option value="'+j+'"'+(signatures[i].signer == j ? ' selected': '')+'>'+signers[j].name+'</option>';
                                 }
-                                $(".signatures").append('<div id="sig'+i+'" class="signdiv z-depth-3" style="top: '+signatures[i].position.top+'px; left: '+signatures[i].position.left+'px;"><span class="xsign" onclick="removeSign('+i+')"><i class="material-icons left">clear</i></span><span class="text">Signature Block '+i+'</span><div class="input-field"><select><option>Choose Signer</option>'+options+'</select≥<span class="xsign"><i class="material-icons left">clear</i>Remove</span></div>');
+                                $(".signatures").append('<div id="sig'+i+'" class="signdiv z-depth-3 blue lighten-2" style="top: '+signatures[i].position.top+'px; left: '+signatures[i].position.left+'px;"><span class="xsign" onclick="removeSign('+i+')"><i class="material-icons left">clear</i></span><span class="text">Signature Block '+i+'</span><div class="input-field"><select><option>Choose Signer</option>'+options+'</select≥<span class="xsign"><i class="material-icons left">clear</i>Remove</span></div>');
                                 $("#sig"+i).draggable({
                                     stop: function(event, ui){
                                         signatures[parseInt($(this).attr('id').substr(3))].position = ui.position;
@@ -223,7 +223,7 @@ function signerCheck(){
             for (j in signers){
                 options += '<option value="'+j+'"'+(signatures[i].signer == j ? ' selected': '')+'>'+signers[j].name+'</option>';
             }
-            $(".signatures").append('<div id="sig'+i+'" class="signdiv z-depth-3" style="top: '+signatures[i].position.top+'px; left: '+signatures[i].position.left+'px;"><span class="xsign" onclick="removeSign('+i+')"><i class="material-icons left">clear</i></span><span class="text">Signature Block '+i+'</span><div class="input-field"><select><option>Choose Signer</option>'+options+'</select≥<span class="xsign"><i class="material-icons left">clear</i>Remove</span></div>');
+            $(".signatures").append('<div id="sig'+i+'" class="signdiv z-depth-3 blue lighten-2" style="top: '+signatures[i].position.top+'px; left: '+signatures[i].position.left+'px;"><span class="xsign" onclick="removeSign('+i+')"><i class="material-icons left">clear</i></span><span class="text">Signature Block '+i+'</span><div class="input-field"><select><option>Choose Signer</option>'+options+'</select≥<span class="xsign"><i class="material-icons left">clear</i>Remove</span></div>');
             $("#sig"+i).draggable({
                 stop: function(event, ui){
                     signatures[parseInt($(this).attr('id').substr(3))].position = ui.position;
@@ -471,7 +471,7 @@ function addSign(){
     for (i in signers){
         options += '<option value="'+i+'">'+signers[i].name+'</option>';
     }
-	$(".signatures").append('<div id="sig'+sigid+'" class="signdiv z-depth-3"><span class="xsign" onclick="removeSign('+sigid+')"><i class="material-icons left">clear</i></span><span class="text">Signature Block '+sigid+'</span><div class="input-field"><select><option>Choose Signer</option><option value="0">'+($("#notarize").prop('checked') ? 'Notary' : 'Your')+' ('+sender.name+')</option>'+options+'</select≥</div>');
+	$(".signatures").append('<div id="sig'+sigid+'" class="signdiv z-depth-3 blue lighten-2"><span class="xsign" onclick="removeSign('+sigid+')"><i class="material-icons left">clear</i></span><span class="text">Signature Block '+sigid+'</span><div class="input-field"><select><option>Choose Signer</option><option value="0">'+($("#notarize").prop('checked') ? 'Notary' : 'Your')+' ('+sender.name+')</option>'+options+'</select≥</div>');
     $("#sig"+sigid).draggable({
         stop: function(event, ui){
             signatures[parseInt($(this).attr('id').substr(3))].position = ui.position;
