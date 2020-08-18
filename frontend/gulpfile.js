@@ -97,7 +97,7 @@ gulp.task('robots', function () {
 gulp.task('applepay', function () {
 	//#FIXME make it conditional later
 	return gulp.src('./src/.well-known/*')
-		.pipe(gulp.dest('./dist/.well-known'))
+		.pipe(gulp.dest('./dist/.well-known/'))
 });
 
 // Gulp task to deploy to s3
