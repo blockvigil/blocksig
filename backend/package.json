@@ -7,10 +7,6 @@
     "start": "node index.js",
     "test": "nyc mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/blocksig/backend.git"
-  },
   "author": "Swaroop Hegde",
   "license": "UNLICENSED",
   "bugs": {
@@ -40,7 +36,7 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
