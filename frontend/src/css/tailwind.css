@@ -2286,6 +2286,10 @@ video {
   display: none;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
 }
@@ -2355,6 +2359,16 @@ video {
   margin-right: auto;
 }
 
+.-my-2 {
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.-mx-5 {
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -2391,6 +2405,10 @@ video {
   outline: 0;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -2413,6 +2431,11 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-10 {
@@ -2519,6 +2542,12 @@ video {
   --text-opacity: 1;
   color: #252f3f;
   color: rgba(37, 47, 63, var(--text-opacity));
+}
+
+.hover\:text-gray-900:hover {
+  --text-opacity: 1;
+  color: #161e2e;
+  color: rgba(22, 30, 46, var(--text-opacity));
 }
 
 .focus\:text-gray-500:focus {
@@ -5223,30 +5252,6 @@ main {
 
   .md\:prose-2xl > :last-child {
     margin-bottom: 0;
-  }
-
-  .md\:flex {
-    display: flex;
-  }
-
-  .md\:items-center {
-    align-items: center;
-  }
-
-  .md\:justify-between {
-    justify-content: space-between;
-  }
-
-  .md\:order-1 {
-    order: 1;
-  }
-
-  .md\:order-2 {
-    order: 2;
-  }
-
-  .md\:mt-0 {
-    margin-top: 0;
   }
 }
 
