@@ -6,9 +6,11 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/materialize-css@1.0.0/dist/css/materialize.min.css" integrity="sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/tailwind.css" />
 	<!-- inject:css -->
 	<!-- endinject -->
+	<link rel="preload" href="https://cdn.jsdelivr.net/npm/inter-ui@3.13.1/inter.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/inter-ui@3.13.1/inter.min.css"></noscript>
 	<link rel="icon" type="image/png" href="https://blocksig.app/logos/blocksig_favicon.png">
 	<meta charset="utf-8" />
 	<!--Let browser know website is optimized for mobile-->
@@ -29,23 +31,63 @@
 		var contractAddress = "<%= contractAddress %>";
 		var ethvigil_apiPrefix = "<%= ethvigil_apiPrefix %>";
 		var stripeKey = "<%= stripeKey %>";
+		var fileName = "<%= fileName %>";
 	</script>
 </head>
 <body>
-	<header>
-		<nav class="light-blue lighten-1" role="navigation">
-			<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo"><img src="https://blocksig.app/logos/blocksig_trans_white.png" height="64px" /></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="./">Home</a></li>
-					<li><a href="start.html">Start</a></li>
-				</ul>
+	<div>
+		<div class="min-h-screen">
+			<nav x-data="{ open: false }" class="bg-white shadow-sm">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="flex justify-between h-16">
+						<div class="flex">
+							<div class="flex-shrink-0 flex items-center">
+								<img class="block lg:hidden h-8 w-auto" src="https://blocksig.app/logos/blocksig_full.png" alt="BlockSig logo" />
+								<img class="hidden lg:block h-8 w-auto" src="https://blocksig.app/logos/blocksig_full.png" alt="BlockSig logo" />
+							</div>
+							<div class="hidden sm:ml-6 sm:flex">
+								<a href="./" :class="{ 'hidden': open, 'block': !open }" :class="{'border-indigo-500': fileName == 'index'}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+									Home
+								</a>
+								<a href="./start.html" :class="{'border-indigo-500': fileName == 'start'}"  class="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+									Start
+								</a>
+								<a href="./verify.html"  :class="{'border-indigo-500': fileName == 'verify'}" class="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+									Verify
+								</a>
+							</div>
+						</div>
+						<div class="-mr-2 flex items-center sm:hidden">
+							<!-- Mobile menu button -->
+							<button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" x-bind:aria-label="open ? 'Close main menu' : 'Main menu'" x-bind:aria-expanded="open">
+								<svg x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'hidden': open, 'block': !open }" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+								</svg>
+								<svg x-state:on="Menu open" x-state:off="Menu closed" :class="{ 'hidden': !open, 'block': open }" class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
 
-				<ul id="nav-mobile" class="sidenav">
-					<li><a href="./">Home</a></li>
-					<li><a href="start.html">Start</a></li>
-				</ul>
-				<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			</div>
-		</nav>
-	</header>
-	<main>
+				<div x-description="Mobile menu, toggle classes based on menu state." x-state:on="Open" x-state:off="closed" :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+					<div class="pt-2 pb-3">
+						<a href="./" class="block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">Home</a>
+						<a href="./start.html" class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Start</a>
+						<a href="./verify.html" class="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Verify</a>
+					</div>
+				</div>
+			</nav>
+
+			<div class="py-10 bg-gray-100">
+				<header>
+
+
+					<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+						<h1 class="text-3xl font-bold leading-tight text-gray-900 capitalize">
+							<!--<%= fileName %>-->
+						</h1>
+					</div>
+				</header>
+				<main>

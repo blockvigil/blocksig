@@ -1,5 +1,7 @@
 	<div class="container">
-		<h2 class="header orange-text">BlockSig - E-Sign Document</h2>
+		<h1 class="text-3xl font-bold leading-tight text-gray-900 capitalize">
+			BlockSig - E-Sign Document
+		</h1>
 		<div id="loader">
 			<p>Loading document..</p>
 			<div class="preloader-wrapper big active">
@@ -20,9 +22,9 @@
 	<div class="section no-pad-bot" id="index-banner" style="display: none;">
 		<div class="container">
 			<div class="row">
-				<button class="btn add" onclick="showSignBox()">Add Signature (<span></span>)</button>
-				<button class="btn clear" onclick="clearSigns()" style="display: none;">Clear Signatures</button>
-				<button class="btn finish" onclick="finish()" style="display: none;">Finish</button>
+				<button class="btn add blue" onclick="showSignBox()">Add Signature (<span></span>)</button>
+				<button class="btn clear blue" onclick="clearSigns()" style="display: none;">Clear Signatures</button>
+				<button class="btn finish blue" onclick="finish()" style="display: none;">Finish</button>
 			</div>
 			<ul class="pagination top">
 				<li class="waves-effect disabled"><a onclick="prevPage()"><i class="material-icons">chevron_left</i></a></li>
@@ -49,8 +51,8 @@
 				<canvas id="signbox" width="240" height="80" style="border: 1px solid black"></canvas>
 			</div>
 			<div>
-				<button class="btn" onclick="signBox.clear()">Clear</button>
-				<button class="btn" onclick="addSign()">Sign</button>
+				<button class="btn blue" onclick="signBox.clear()">Clear</button>
+				<button class="btn blue" onclick="addSign()">Sign</button>
 			</div>
 		</div>
 		<div class="modal-footer">

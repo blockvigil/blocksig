@@ -6,6 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
 	display: flex;
 	min-height: 100vh;

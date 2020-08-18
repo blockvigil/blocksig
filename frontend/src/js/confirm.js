@@ -11,18 +11,6 @@ $(document).ready(function(){
 		showAlert("The link you followed was broken. Check again or email us at hello@blocksig.app");
 		return;
 	} else {
-		loadingTask = pdfjsLib.getDocument(apiPrefix+'/viewDoc/'+docToken);
-	}
-	loadingTask.promise.then(function(pdf) {
-		console.log('PDF loaded');
-		doc = pdf;
-		console.log(doc.numPages);
-		$(".navigation").show();
-		docHash = doc.fingerprint;
-		console.log('docHash', docHash);
-		console.log('Pages', doc.numPages);
-		setPagination();
-		$(".signatures").html('');
 		$.getJSON(apiPrefix+'/view/'+docToken, function(d){
 			$("#loader").hide();
 			if (!d.success){
@@ -30,18 +18,12 @@ $(document).ready(function(){
 				showAlert("We had trouble getting data. Check again or email us at hello@blocksig.app");
 				return;
 			}
-			signatures = d.data.signatures;
-			for (i in signatures){
-				$(".signatures").append('<div id="sig'+i+'" class="signdiv" style="top: '+signatures[i].position.top+'px; left: '+signatures[i].position.left+
-				'px;"><span class="center">'+d.data.signers[signatures[i].signer].name+'\'s Signature</span></div>');
-			}
+			$(".header span").text(d.data.name);
 			var signerCount = Object.keys(d.data.signers).length;
-			$("#index-banner").show();
-			// Fetch the first page
-			renderPage(doc, 1);
 			$("#loader p").html('Confirming document..');
 			$("#loader").show();
 			$.post(apiPrefix+'/confirm', { token: docToken }, "json").done(function(d){
+				$("#close").show();
 				console.log(signerCount);
 				var text;
 				if (signerCount == 0){
@@ -53,16 +35,9 @@ $(document).ready(function(){
 				showAlert(text, "Success!");
 			}).fail(function(d){
 				$("#loader").hide();
+				$("#close").show();
 				showAlert("This document appears to have already been confirmed. Contact us at hello@blocksig.app");
 			});
 		});
-		//signatures = JSON.parse(localStorage.getItem(docHash+'_signatures'));
-	}, function(error){
-		console.log(error.message);
-		if (error.status == 403){
-			showAlert("This document appears to have already been confirmed. Contact us at hello@blocksig.app");
-		} else {
-			showAlert("We had trouble loading the document. Contact us at hello@blocksig.app");
-		}
-	});
+	}
 });

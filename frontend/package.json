@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp default",
+    "clean": "gulp clean",
     "deploy": "gulp deploy",
+    "tailwind": "tailwindcss build src/css/common.css -o src/css/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +28,7 @@
     "defaults"
   ],
   "devDependencies": {
+    "@tailwindcss/ui": "^0.5.0",
     "del": "^5.1.0",
     "glob": "^7.1.6",
     "gulp": "^4.0.2",
@@ -39,6 +42,7 @@
     "gulp-template": "^5.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
-    "run-sequence": "^2.2.1"
+    "run-sequence": "^2.2.1",
+    "tailwindcss": "^1.6.2"
   }
 }
