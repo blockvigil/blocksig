@@ -1,6 +1,6 @@
 # BlockSig
 
-A notarized document signing solution backed by proofs on Ethereum and IPFS. Built for EthGlobal's #HackFS 2020 - Filecoin Hackathon
+A notarized document signing solution backed by proofs on Ethereum and encrypted data on IPFS/Filecoin. Built for EthGlobal's #HackFS 2020 - Filecoin Hackathon
 
 ### Writeup:
 [![Preview](/static/blocksig-cover.jpg)](https://drive.google.com/file/d/1m9A0SNjsPfTFo2YjBbwOHMIdLrsQuxq1/view?usp=sharing)
