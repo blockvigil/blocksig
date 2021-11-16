@@ -17,7 +17,7 @@
     "@fleekhq/space-client": "^0.1.5",
     "@koa/cors": "^3.1.0",
     "@slack/client": "^5.0.2",
-    "aws-sdk": "^2.723.0",
+    "aws-sdk": "^2.814.0",
     "config": "^3.3.1",
     "ethjs-account": "git://github.com/ethjs/ethjs-account.git#dependabot/npm_and_yarn/elliptic-6.5.3",
     "hummus": "^1.0.108",
